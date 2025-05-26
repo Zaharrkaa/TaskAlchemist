@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя страница</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<!-- Шапка -->
+<header>
+    <a href="/" class="logo">Task alchemist</a>
+    <div class="user-info">
+        <div class="user-avatar" th:text="${user.getName().substring(0, 1)}"></div>
+        <a href="/home/profile" class="profile-link" th:text="${user.getName()}"></a>
+    </div>
+</header>
+
+<!-- Основное содержимое -->
+<main>
+    <section class="welcome-section">
+        <h1 th:text="'Добро пожаловать, ' + ${user.getName()}"></h1>
+        <p>Мы рады видеть вас на нашем сайте. Выберите раздел, который вас интересует:</p>
+
+        <div class="nav-links">
+            <a href="/news">Новости</a>
+            <a href="https://vk.com/club230628374?from=groups">Сообщество</a>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="copyright">
+        © 2025 Task alchemist. Все права защищены.
+    </div>
+</footer>
+</body>
+</html>

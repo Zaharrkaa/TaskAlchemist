@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь</title>
+</head>
+<body style="font-size: 20px">
+    <p th:text="'Id: ' + ${user.getId()}"></p>
+    <p th:text="'Имя: ' + ${user.getUsername()}"></p>
+    <p th:text="'Email: ' + ${user.getEmail()}"></p>
+    <p th:text="'Роль: ' + ${role}"></p>
+
+    <form th:if="${!role.equals('Админ')}" th:action="@{/users/{id}/makeAdmin(id=${user.getId()})}" th:method="patch">
+        <button>Назначить администратором</button>
+    </form>
+    <br>
+    <br>
+    <form th:if="${!role.equals('Админ')}" th:action="@{/users/{id}(id=${user.getId()})}" th:method="delete">
+        <button>Удалить</button>
+    </form>
+</body>
+</html>

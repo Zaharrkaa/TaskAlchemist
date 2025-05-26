@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.getUsername() + ' | Profile'}">Profile</title>
+    <link rel="stylesheet" href="/css/home.css"> <!-- Общие стили -->
+    <link rel="stylesheet" href="/css/profile.css"> <!-- Специфичные для профиля -->
+</head>
+<body>
+<!-- Общая шапка (как на других страницах) -->
+<header>
+    <a href="/" class="logo">Task alchemist</a>
+    <div class="user-info">
+        <div class="user-avatar" th:text="${user.getUsername().substring(0, 1)}"></div>
+        <a href="/home/profile" class="profile-link" th:text="${user.getUsername()}"></a>
+    </div>
+</header>
+
+<!-- Основной контент профиля -->
+<main class="profile-container">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-avatar" th:text="${user.getUsername().substring(0, 1)}"></div>
+            <h1 th:text="${user.getUsername()}"></h1>
+        </div>
+
+        <div class="profile-details">
+            <div class="detail-item">
+                <span class="detail-label">Логин:</span>
+                <span class="detail-value" th:text="${user.getUsername()}"></span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Email:</span>
+                <span class="detail-value" th:text="${user.getEmail()}"></span>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <a href="/home/profile/edit" class="btn btn-edit">Редактировать профиль</a>
+            <a href="/logout" class="btn btn-logout">Выйти</a>
+            <a href="/admin" th:if="${isAdmin}" class="btn btn-admin">Панель админа</a>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="copyright">
+        © 2025 Task alchemist. Все права защищены.
+    </div>
+</footer>
+</body>
+</html>

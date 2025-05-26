@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+    <link rel="stylesheet" href="/css/news.css">
+</head>
+<body>
+<!-- Шапка (как на главной) -->
+<header>
+    <a href="/home" class="logo">Task alchemist</a>
+    <div class="user-info">
+        <div class="user-avatar" th:text="${user.getUsername().substring(0, 1)}"></div>
+        <a href="/home/profile" class="profile-link" th:text="${user.getUsername()}"></a>
+    </div>
+</header>
+
+<!-- Основной контент -->
+<main class="news-container">
+    <h1>Последние новости</h1>
+
+    <div class="news-list">
+        <!-- Цикл для вывода новостей -->
+        <div class="news-item" th:each="newsItem: ${news}">
+            <h2 class="news-title" th:text="${newsItem.getTitle()}">Заголовок</h2>
+            <div class="news-meta">
+                <span class="news-date" th:text="${#temporals.format(newsItem.date, 'dd.MM.yyyy')}">Дата</span>
+                <span class="news-author" th:text="'Автор: ' + ${newsItem.getAuthor()}">Автор</span>
+            </div>
+            <div class="news-actions">
+                <a th:href="@{/news/{id}(id=${newsItem.getId()})}" class="read-more">Читать далее</a>
+                <a th:if="${isAdmin}" th:href="@{/news/{id}/edit(id=${newsItem.getId()})}" class="edit-btn">Редактировать</a>
+                <form th:if="${isAdmin}" th:action="@{/news/{id}/delete(id=${newsItem.getId()})}" th:method="delete" class="delete-form">
+                    <button type="submit" class="delete-btn" onclick="return confirm('Удалить новость? Это действие нельзя отменить.')">
+                        Удалить
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Футер (как на главной) -->
+<footer>
+    <div class="copyright">
+        © 2025 Task alchemist. Все права защищены.
+    </div>
+</footer>
+</body>
+</html>

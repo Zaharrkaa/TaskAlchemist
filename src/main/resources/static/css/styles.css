@@ -1,0 +1,102 @@
+
+
+body {
+    font-family: 'Carmen', sans-serif;
+    background-color: #F2F0F4;
+    color: #0D0A2C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Общие стили для форм */
+form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 2px solid #F2F0F4;
+    border-radius: 8px;
+    font-family: 'Carmen', sans-serif;
+    font-size: 16px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #581CA0;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(88, 28, 160, 0.2);
+}
+
+/* Стили для кнопок */
+button {
+    background-color: #581CA0;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Carmen', sans-serif;
+    font-size: 16px;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0D0A2C;
+    transform: translateY(-2px);
+}
+
+/* Стили для ссылок */
+a {
+    color: #F91FC6;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+
+a:hover {
+    color: #581CA0;
+    text-decoration: underline;
+}
+
+/* Стили для сообщений об ошибках */
+p[style="color: red;"] {
+    color: #F91FC6 !important;
+    margin: 10px 0 0 0;
+    font-size: 14px;
+}
+
+/* Заголовки */
+.title {
+    color: #0D0A2C;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    form {
+        padding: 30px 20px;
+    }
+
+    body {
+        padding: 10px;
+    }
+}

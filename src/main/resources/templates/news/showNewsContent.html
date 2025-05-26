@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новость</title>
+    <link rel="stylesheet" href="/css/news.css">
+</head>
+<body>
+<!-- Шапка (единая для всех страниц) -->
+<header>
+    <a href="/" class="logo">Task alchemist</a>
+    <div class="user-info">
+        <div class="user-avatar" th:text="${user.getName().substring(0, 1)}"></div>
+        <a href="/home/profile" class="profile-link" th:text="${user.getName()}"></a>
+    </div>
+</header>
+
+<!-- Контент новости -->
+<main class="single-news-container">
+    <article class="single-news">
+        <!-- Хлебные крошки -->
+        <nav class="breadcrumbs">
+            <a href="/">Главная</a> >
+            <a href="/news">Новости</a> >
+            <span th:text="${newsItem.getTitle()}"></span>
+        </nav>
+
+        <!-- Заголовок и мета-информация -->
+        <h1 class="single-news-title" th:text="${newsItem.getTitle()}"></h1>
+
+        <div class="single-news-meta">
+                <span class="news-date"
+                      th:text="${#temporals.format(newsItem.date, 'dd.MM.yyyy')}"></span>
+            <span class="news-author" th:text="${newsItem.getAuthor()}"></span>
+        </div>
+
+        <!-- Основное содержание -->
+        <div class="single-news-content" th:utext="${newsItem.getContent()}"></div>
+
+        <!-- Кнопка возврата -->
+        <div class="news-back">
+            <a href="/news" class="button">← Все новости</a>
+        </div>
+    </article>
+</main>
+
+<!-- Футер (единый для всех страниц) -->
+<footer>
+    <div class="copyright">
+        © 2023 Task alchemist. Все права защищены.
+    </div>
+</footer>
+</body>
+</html>
